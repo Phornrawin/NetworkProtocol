@@ -33,6 +33,30 @@ public final class Package {
 
     public static class PBPackage{
         public static final String currency = "PB Cash";
+        public static final int pbc10000 = 10000;
+        public static final int pbc15000 = 15000;
+        public static final int pbc30000 = 30000;
+        public static final int pbc50000 = 50000;
+        public static final int pbc100000 = 100000;
+    }
 
+    public static class VinPackage{
+        public static final String currency = "NX";
+        public static final int nx225 = 225;
+        public static final int nx300 = 300;
+        public static final int nx450 = 450;
+        public static final int nx800 = 800;
+        public static final int nx1650 = 1650;
+        public static final int nx3600 = 3600;
+    }
+
+    public static class FIFAPackage{
+        public static final String curerncy = "FO Cash";
+        public static final int fo10000 = 10000;
+        public static final int fo15000 = 15000;
+        public static final int fo30000 = 30000;
+        public static final int fo50000 = 50000;
+        public static final int fo100000 = 100000;
+        public static final int fo300000 = 300000;
     }
 }
