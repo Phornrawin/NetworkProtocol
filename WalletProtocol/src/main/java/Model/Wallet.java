@@ -5,7 +5,7 @@ public class Wallet {
     private String idCustomer;
     private double balance;
 
-    public Wallet(String id, String idCustomer, double balance) {
+    public Wallet(String idCustomer, String id, double balance) {
         this.id = id;
         this.idCustomer = idCustomer;
         this.balance = balance;
@@ -21,5 +21,10 @@ public class Wallet {
 
     public double getBalance() {
         return balance;
+    }
+
+    @Override
+    public String toString() {
+        return idCustomer + " " + id + " " + balance;
     }
 }
