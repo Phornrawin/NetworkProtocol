@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GameWalletDatabase/GameWalletDatabase.iml" filepath="$PROJECT_DIR$/GameWalletDatabase/GameWalletDatabase.iml" />
       <module fileurl="file://$PROJECT_DIR$/NetworkProtocol.iml" filepath="$PROJECT_DIR$/NetworkProtocol.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WalletProtocol/WalletProtocol.iml" filepath="$PROJECT_DIR$/WalletProtocol/WalletProtocol.iml" />
     </modules>
   </component>
 </project>

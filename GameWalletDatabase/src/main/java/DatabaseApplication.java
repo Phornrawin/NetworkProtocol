@@ -1,3 +1,4 @@
+import controller.MainController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -9,6 +10,8 @@ public class DatabaseApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        MainController controller = new MainController();
+        controller.startServer();
 
     }
 }

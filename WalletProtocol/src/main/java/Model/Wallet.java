@@ -1,4 +1,4 @@
-package model;
+package Model;
 
 public class Wallet {
     private String id;

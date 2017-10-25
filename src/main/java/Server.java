@@ -11,7 +11,8 @@ public class Server {
             Socket socket;
             while (true){
                 socket = server.accept();
-                System.out.println("Accept" + socket.getInetAddress().getHostName());
+//                System.out.println(socket.get);
+                System.out.println("Accept" + socket.getInetAddress());
                 PrintStream output = new PrintStream(socket.getOutputStream());
                 BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 

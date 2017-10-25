@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="GameWalletDatabase" />
+        <module name="WalletProtocol" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="GameWalletDatabase" target="1.5" />
       <module name="NetworkProtocol" target="1.5" />
+      <module name="WalletProtocol" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
