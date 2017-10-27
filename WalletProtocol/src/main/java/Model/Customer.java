@@ -12,4 +12,19 @@ public class Customer {
         this.password = password;
     }
 
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

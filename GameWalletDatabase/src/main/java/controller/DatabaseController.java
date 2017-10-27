@@ -1,18 +1,23 @@
 package controller;
 
+import Model.Customer;
 import Model.Report;
 import Model.Wallet;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class DatabaseController {
     private static DatabaseController dbController;
+    private SimpleDateFormat dateFormat;
 
     private DatabaseController(){
-
+        dateFormat = new SimpleDateFormat("E dd MMM yyyy HH:mm", Locale.ENGLISH);
     }
 
     public static DatabaseController getInstance(){
@@ -22,7 +27,7 @@ public class DatabaseController {
         return dbController;
     }
 
-    public Boolean checkIDFromLogin(String id, String pw){
+    public Customer checkIDFromLogin(String id, String pw){
         Connection conn = setConnettion("jdbc:sqlite:GameWallet.db");
 
         try {
@@ -35,19 +40,20 @@ public class DatabaseController {
 
                 while(resultSet.next()){
                     if(id.equals(resultSet.getString(1)) && pw.equals(resultSet.getString(2)))
-                        return true;
+                        return new Customer(resultSet.getString(3), resultSet.getString(4), resultSet.getString(1), resultSet.getString(2));
+
                 }
-                return false;
+                return null;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
 
     }
 
 
-    public ArrayList<Wallet> loadWalletFromLogin(String id){
+    public ArrayList<String> loadWalletFromLogin(String id){
         Connection conn = setConnettion("jdbc:sqlite:GameWallet.db");
         try {
             if(conn != null) {
@@ -60,9 +66,9 @@ public class DatabaseController {
                 Statement statement = conn.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
 
-                ArrayList<Wallet> wallets = new ArrayList<Wallet>();
+                ArrayList<String> wallets = new ArrayList<>();
                 while(resultSet.next()){
-                    wallets.add(new Wallet(resultSet.getString(1), resultSet.getString(2), resultSet.getDouble(3)));
+                    wallets.add(new Wallet(resultSet.getString(1), resultSet.getString(2), resultSet.getDouble(3)).toString());
                     System.out.println("wallets = " + wallets);
                 }
                 conn.close();
@@ -71,7 +77,6 @@ public class DatabaseController {
         } catch (SQLException e) {
                 e.printStackTrace();
         }
-
 
         return null;
 
@@ -103,7 +108,58 @@ public class DatabaseController {
 
     }
 
-//    public ArrayList<Report> loadReportFrom
+    public ArrayList<String> loadReportFromCustomerID(String id){
+        Connection conn = setConnettion("jdbc:sqlite:GameWallet.db");
+
+        try {
+            if(conn != null){
+                System.out.println("Connected to the database...");
+                String query = "select GameName, Date, Net\n" +
+                        "from reports\n" +
+                        "where reports.CustomerID=\"" + id + "\"";
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
+
+                ArrayList<String> reports = new ArrayList<String>();
+                while(resultSet.next()){
+                    String CustomerId = id;
+                    String gameName = resultSet.getString(1);
+                    Date date = dateFormat.parse(resultSet.getString(2));
+                    double net = resultSet.getDouble(3);
+
+                    reports.add(new Report(CustomerId, gameName, date, net).toString());
+                }
+                conn.close();
+                return reports;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
+
+    public boolean addReportToDatabase(Report report){
+        Connection conn = setConnettion("jdbc:sqlite:GameWallet.db");
+        try {
+            if(conn != null) {
+                System.out.println("Connected to the database...");
+                String query = String.format("insert into reports values (\'%s\', \'%s\', \'%s\', \'%s\')", report.getCustomerID(), report.getGameName(), report.getTransactionDate(), report.getNet());
+
+                Statement statement = conn.createStatement();
+                statement.executeUpdate(query);
+
+                conn.close();
+                return true;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        return false;
+    }
 
     public Connection setConnettion(String url){
         try {

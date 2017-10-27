@@ -16,6 +16,9 @@ public class Protocol {
         public static final String WALLETID = "id-wallet";
         public static final String CUSTOMERID = "id-customer";
         public static final String CUSTOMERPW = "pw-customer";
+        public static final String CUSTOMERFNAME = "fname-customer";
+        public static final String CUSTOMERLNAME = "lname-customer";
+        public static final String LIST = "list";
         public static final String END = "end";
 
     }
@@ -31,6 +34,7 @@ public class Protocol {
         public static final String LOGIN = "login";
         public static final String CREDITS = "credits";
         public static final String REPORT = "report";
+        public static final String WALLET = "wallet";
         public static final String REPLY = "reply";
     }
 

@@ -25,6 +25,6 @@ public class Wallet {
 
     @Override
     public String toString() {
-        return idCustomer + " " + id + " " + balance;
+        return idCustomer + "-" + id + "-" + balance;
     }
 }

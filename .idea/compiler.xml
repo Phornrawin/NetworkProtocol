@@ -10,10 +10,10 @@
         <module name="WalletProtocol" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="GameWalletDatabase" target="1.5" />
-      <module name="NetworkProtocol" target="1.5" />
-      <module name="WalletProtocol" target="1.5" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="GameWalletDatabase" target="1.8" />
+      <module name="NetworkProtocol" target="1.8" />
+      <module name="WalletProtocol" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
