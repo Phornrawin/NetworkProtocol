@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="GameWalletClient" />
         <module name="GameWalletDatabase" />
         <module name="WalletProtocol" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
+      <module name="GameWalletClient" target="1.8" />
       <module name="GameWalletDatabase" target="1.8" />
       <module name="NetworkProtocol" target="1.8" />
       <module name="WalletProtocol" target="1.8" />

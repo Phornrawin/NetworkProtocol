@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/GameWalletClient/GameWalletClient.iml" filepath="$PROJECT_DIR$/GameWalletClient/GameWalletClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/GameWalletDatabase/GameWalletDatabase.iml" filepath="$PROJECT_DIR$/GameWalletDatabase/GameWalletDatabase.iml" />
       <module fileurl="file://$PROJECT_DIR$/NetworkProtocol.iml" filepath="$PROJECT_DIR$/NetworkProtocol.iml" />
       <module fileurl="file://$PROJECT_DIR$/WalletProtocol/WalletProtocol.iml" filepath="$PROJECT_DIR$/WalletProtocol/WalletProtocol.iml" />

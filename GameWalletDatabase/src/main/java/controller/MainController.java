@@ -26,9 +26,11 @@ public class MainController {
         try {
             ServerSocket server = new ServerSocket(port);
             Socket socket;
+            System.out.println("Start Server.");
             while (true){
+                System.out.println("wait...");
+
                 socket = server.accept();
-                System.out.println("Accept" + socket.getInetAddress().getHostName());
                 PrintStream output = new PrintStream(socket.getOutputStream());
                 BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 Map<String, String> map = parser.parseRequestToMap(input);

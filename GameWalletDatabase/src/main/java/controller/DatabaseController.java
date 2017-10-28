@@ -28,16 +28,16 @@ public class DatabaseController {
     }
 
     public Customer checkIDFromLogin(String id, String pw){
-        Connection conn = setConnettion("jdbc:sqlite:GameWallet.db");
+        Connection conn = setConnettion("jdbc:sqlite:GameWalletDatabase/GameWallet.db");
 
         try {
             if(conn != null){
                 System.out.println("Connected to the database...");
                 String query = "select * from customers";
-                Statement statement = null;
-                statement = conn.createStatement();
+                Statement statement = conn.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
 
+                System.out.println("id: " + id + " pw: " + pw);
                 while(resultSet.next()){
                     if(id.equals(resultSet.getString(1)) && pw.equals(resultSet.getString(2)))
                         return new Customer(resultSet.getString(3), resultSet.getString(4), resultSet.getString(1), resultSet.getString(2));
@@ -54,11 +54,11 @@ public class DatabaseController {
 
 
     public ArrayList<String> loadWalletFromLogin(String id){
-        Connection conn = setConnettion("jdbc:sqlite:GameWallet.db");
+        Connection conn = setConnettion("jdbc:sqlite:GameWalletDatabase/GameWallet.db");
         try {
             if(conn != null) {
                 System.out.println("Connected to the database...");
-                String query = "select WalletId, balance\n" +
+                String query = "select *\n" +
                             "from wallets\n" +
                             "join customers\n" +
                             "on wallets.CustomerId = customers.CustomesId\n" +
@@ -66,7 +66,7 @@ public class DatabaseController {
                 Statement statement = conn.createStatement();
                 ResultSet resultSet = statement.executeQuery(query);
 
-                ArrayList<String> wallets = new ArrayList<>();
+                ArrayList<String> wallets = new ArrayList();
                 while(resultSet.next()){
                     wallets.add(new Wallet(resultSet.getString(1), resultSet.getString(2), resultSet.getDouble(3)).toString());
                     System.out.println("wallets = " + wallets);
@@ -83,7 +83,7 @@ public class DatabaseController {
     }
 
     public Boolean checkAndPayFromGameDredit(double net, String idWallet){
-        Connection conn = setConnettion("jdbc:sqlite:GameWallet.db");
+        Connection conn = setConnettion("jdbc:sqlite:GameWalletDatabase/GameWallet.db");
 
         try {
             if(conn != null){
@@ -109,7 +109,7 @@ public class DatabaseController {
     }
 
     public ArrayList<String> loadReportFromCustomerID(String id){
-        Connection conn = setConnettion("jdbc:sqlite:GameWallet.db");
+        Connection conn = setConnettion("jdbc:sqlite:GameWalletDatabase/GameWallet.db");
 
         try {
             if(conn != null){
@@ -143,7 +143,7 @@ public class DatabaseController {
     }
 
     public boolean addReportToDatabase(Report report){
-        Connection conn = setConnettion("jdbc:sqlite:GameWallet.db");
+        Connection conn = setConnettion("jdbc:sqlite:GameWalletDatabase/GameWallet.db");
         try {
             if(conn != null) {
                 System.out.println("Connected to the database...");

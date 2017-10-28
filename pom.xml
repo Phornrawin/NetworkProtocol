@@ -11,6 +11,7 @@
     <modules>
         <module>GameWalletDatabase</module>
         <module>WalletProtocol</module>
+        <module>GameWalletClient</module>
     </modules>
 
 
